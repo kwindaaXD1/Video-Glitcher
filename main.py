@@ -268,6 +268,41 @@ TRANSLATIONS = {
         'theme_light_label': '浅色',
         'theme_dark_label': '深色',
     },
+
+    'pt': {
+        'title': 'Bugador de vídeo',
+        'lang_label': 'Idioma:', 'theme_label': 'Tema:', 'lang_name': 'Português',
+        'input_video': 'Vídeo de input:', 'output_dir': 'Pasta de output',
+        'output_name': 'Arquivo de output (não coloque extensão):',
+        'btn_browse': 'Procurar...', 'btn_process': 'Processar vídeo',
+        'btn_play': 'Reproduzir', 'log_label': 'ffmpeg log:',
+        'err': 'Erro', 'warn': 'Aviso',
+        'ffmpeg_not_found': 'ffmpeg não encontrado',
+        'ffmpeg_not_found_msg': 'Coloque ffmpeg.exe no próximo script.',
+        'ffplay_not_found': 'ffplay não encontrado',
+        'ffplay_not_found_msg': 'Coloque ffplay.exe no próximo script..',
+        'file_not_found': 'Arquivo não encontrado:', 'dir_not_found': 'Pasta não encontrada:',
+        'enter_name': 'Coloque arquivo de output',
+        'same_file': 'Arquivo de output é o mesmo de input.',
+        'verify_failed': 'Verificação falha',
+        'verify_failed_hint': 'Arquivo criado mas não reproduzido.',
+        'saved': 'Salvo:', 'play_now': 'Reproduzir agora?',
+        'no_file_to_play': 'Sem arquivo pra reproduzir',
+        'error_ffmpeg': 'Erro do ffmpeg', 'success': 'Sucesso',
+        'ffmpeg_start': 'Iniciando ffmpeg...',
+        'done_checking': 'Pronto, verificando...',
+        'verify_ok': 'Verificação passou:', 'verify_fail': 'Verification falhou:',
+        'size_bytes': 'Tamanho:', 'playing': 'Reproduzindo:',
+        'choose_video_title': 'Escolha um nome pro vídeo', 'choose_dir_title': 'Escolha um nome pra pasta',
+        'all_files': 'Todos os arquivos', 'video_files': 'Vídeo',
+        'empty_file': 'Arquivo vazio (0 bytes).', 'not_found_path': 'Arquivo não encontrado:',
+        'tray_title': 'Pronto', 'tray_msg': 'Vídeo processado com sucesso',
+        'first_run_title': 'Primeira vez rodando',
+        'first_run_lang': 'Idioma:',
+        'first_run_theme': 'Tema:',
+        'theme_light_label': 'Claro',
+        'theme_dark_label': 'Escuro',
+    },
 }
 
 THEMES = {
@@ -366,27 +401,27 @@ class FirstRunDialog(tk.Toplevel):
     def __init__(self, parent):
         tk.Toplevel.__init__(self, parent)
         self.result = None
-        self.title("First launch / Первый запуск / 首次启动")
+        self.title("First launch / Первый запуск / 首次启动 / Primeria vez rodando")
         self.resizable(False, False)
         self.protocol("WM_DELETE_WINDOW", self.on_cancel)
         set_window_icon(self)
 
-        tk.Label(self, text="Language / Язык / 语言:",
+        tk.Label(self, text="Language / Язык / 语言 / Idioma:",
                  font=("Arial", 11, "bold")).pack(pady=(20, 6))
         self.lang_var = tk.StringVar(value='ru')
         lf = tk.Frame(self)
         lf.pack()
-        for code, label in [('ru', 'Русский'), ('en', 'English'), ('zh', '中文')]:
+        for code, label in [('ru', 'Русский'), ('en', 'English'), ('zh', '中文'), ('pt', 'Português')]:
             tk.Radiobutton(lf, text=label, variable=self.lang_var,
                            value=code).pack(side='left', padx=10)
 
-        tk.Label(self, text="Theme / Тема / 主题:",
+        tk.Label(self, text="Theme / Тема / 主题 / Tema:",
                  font=("Arial", 11, "bold")).pack(pady=(20, 6))
         self.theme_var = tk.StringVar(value='light')
         tf = tk.Frame(self)
         tf.pack()
-        for code, label in [('light', 'Light / Светлая / 浅色'),
-                            ('dark', 'Dark / Тёмная / 深色')]:
+        for code, label in [('light', 'Light / Светлая / 浅色 / Claro'),
+                            ('dark', 'Dark / Тёмная / 深色 / Escuro')]:
             tk.Radiobutton(tf, text=label, variable=self.theme_var,
                            value=code).pack(side='left', padx=10)
 
